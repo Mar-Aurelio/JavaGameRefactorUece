@@ -2,11 +2,13 @@ public abstract class Bonus {
   protected int extraSpaces;
   protected int extraCoins;
   protected int price;
+  protected String name;
 
-  public Bonus(int extraSpaces, int extraCoins, int price) {
+  public Bonus(int extraSpaces, int extraCoins, int price, String name) {
     this.extraSpaces = extraSpaces;
     this.extraCoins = extraCoins;
     this.price = price;
+    this.name = name;
   }
 
   public int getExtraSpaces() {
@@ -19,5 +21,9 @@ public abstract class Bonus {
 
   public int getPrice() {
     return price;
+  }
+
+  public String getName() {
+    return name;
   }
 }

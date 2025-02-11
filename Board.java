@@ -40,8 +40,15 @@ public class Board{
   }
 
   public void printGamestate() {
-    for (Player p : players)
+    for (Player p : players) {
       System.out.println("Jogador " + p.getCor() + " está na casa " + p.getPos() + " com " + p.getCoins() + " moedas");
+      
+      if (!p.getBonuses().isEmpty())
+        System.out.println("Bonus ativos:");
+        for (Bonus b : p.getBonuses()) {
+          System.out.println(b.getName());
+        }
+    }
 
     System.out.println("Turno atual: " + players.get(currPlayer).getCor());
   }
