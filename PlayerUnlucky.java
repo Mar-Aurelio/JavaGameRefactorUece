@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class PlayerUnlucky extends Player {
   public PlayerUnlucky(String color) {
     super(color);
@@ -10,9 +8,8 @@ public class PlayerUnlucky extends Player {
   }
 
   public void play() {
-    Scanner waitForEnter = new Scanner(System.in);
     System.out.println("Pressione enter para jogar");
-    waitForEnter.nextLine();
+    input.nextLine();
     hasPlayed = false;
     switch (skipTurns) {
       case 0:
@@ -33,7 +30,6 @@ public class PlayerUnlucky extends Player {
         }
 
         System.out.println("Deseja pagar 2 moedas para jogar? (s/n)");
-        Scanner input = new Scanner(System.in);
         String pago = input.nextLine();
         input.close();
 
@@ -49,6 +45,5 @@ public class PlayerUnlucky extends Player {
 
         break;
     }
-    waitForEnter.close();
   }
 }

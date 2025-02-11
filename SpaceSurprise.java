@@ -19,15 +19,15 @@ public class SpaceSurprise extends Space {
 
     switch (card) {
       case Surprise.REGULAR:
-        players.set(currentPlayer, new PlayerRegular(players.get(currentPlayer)));
+        players.set(currentPlayer, GameFactory.changePlayerType('R', players.get(currentPlayer)));
         System.out.println("Casa de surpresa: " + players.get(currentPlayer).getCor() + " agore é normal");
         break;
       case Surprise.LUCKY:
-        players.set(currentPlayer, new PlayerLucky(players.get(currentPlayer)));
+        players.set(currentPlayer, GameFactory.changePlayerType('L', players.get(currentPlayer)));
         System.out.println("Casa de surpresa: " + players.get(currentPlayer).getCor() + " agore é sortudo");
         break;
       case Surprise.UNLUCKY:
-        players.set(currentPlayer, new PlayerUnlucky(players.get(currentPlayer)));
+        players.set(currentPlayer, GameFactory.changePlayerType('U', players.get(currentPlayer)));
         System.out.println("Casa de surpresa: " + players.get(currentPlayer).getCor() + " agore é azarado");
         break;
     }

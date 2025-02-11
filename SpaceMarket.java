@@ -2,13 +2,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SpaceMarket extends Space {
+  Scanner input = new Scanner(System.in);
   public SpaceMarket() {
     super('$');
   }
 
   public void applyEffect(ArrayList<Player> players, int playersSize, int currentPlayer) {
-    System.out.println("Casa de Troca: escolha um bonus para seu jogador");
-    Scanner input = new Scanner(System.in);
+    System.out.println("Casa de Loja: escolha um bonus para seu jogador");
 
     boolean inMarket = true;
     while (inMarket) {
@@ -47,7 +47,5 @@ public class SpaceMarket extends Space {
       else if (result == 2)
         System.out.println("Jogador nãp possui moedas o suficiente para adiquirir esses bonus");
     }
-
-    input.close();
   }
 }

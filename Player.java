@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public abstract class Player {
   protected int position;
@@ -11,6 +12,7 @@ public abstract class Player {
   protected String color;
   protected ArrayList<Bonus> bonuses;
   protected Random random = new Random();
+  protected Scanner input;
 
   public Player(String color) {
     this.color = color;
@@ -23,6 +25,8 @@ public abstract class Player {
     bonuses = new ArrayList<Bonus>();
     dice[0] = 0;
     dice[1] = 0;
+
+    input = new Scanner(System.in);
   }
 
   public Player(Player copy) {
@@ -34,9 +38,16 @@ public abstract class Player {
     this.skipTurns = copy.skipTurns;
     this.dice = copy.dice;
     this.bonuses = copy.bonuses;
+
+    input = new Scanner(System.in);
   }
 
   public abstract void play();
+
+  public void playDebug(int newPos) {
+    position = newPos;
+    hasPlayed = true;
+  }
 
   public int addBonus(Bonus bonus) {
     if (bonuses.contains(bonus))

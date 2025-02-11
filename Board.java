@@ -8,29 +8,47 @@ public class Board{
   private int currPlayer;
   private String winner;
 
-  private Board(int numPlayers, int numSpaces, String[] colors) {
+  private Board(String inPlayers, String inSpaces, String[] colors) {
     currPlayer = 0;
     spaces = new ArrayList<Space>();
     players = new ArrayList<Player>();
 
-    for (int i = 0; i < numSpaces; i++) {
-      //Setup spaces
+    for (int i = 0; i < inSpaces.length(); i++) {
+      spaces.add(GameFactory.getSpace(inSpaces.charAt(i)));
     }
 
-    for (int i = 0; i < numPlayers; i++) {
-      //Initialize player types
+    System.out.println(inPlayers.length());
+    for (int i = 0; i < inPlayers.length(); i++) {
+      players.add(GameFactory.getPlayer(inPlayers.charAt(i), colors[i]));
     }
   }
 
-  public static Board getInstance(int numPlayers, int numSpaces, String[] colors) {
+  public static Board getInstance(String inPlayers, String inSpaces, String[] colors) {
     if (instance == null)
-      instance = new Board(numPlayers, numSpaces, colors);
+      instance = new Board(inPlayers, inSpaces, colors);
     return instance;
   }
 
   public void executeTurn() {
     players.get(currPlayer).play();
     players.get(currPlayer).applyBonuses();
+
+    if (checkWinners())
+      return;
+
+    if (players.get(currPlayer).getHasPlayed())
+      spaces.get(players.get(currPlayer).getPos()).applyEffect(players, players.size(), currPlayer);
+
+    currPlayer++;
+    currPlayer = currPlayer%players.size();
+  }
+
+  public void executeTurn(int debugValue) {
+    players.get(currPlayer).playDebug(debugValue);
+    players.get(currPlayer).applyBonuses();
+
+    if (checkWinners())
+      return;
 
     if (players.get(currPlayer).getHasPlayed())
       spaces.get(players.get(currPlayer).getPos()).applyEffect(players, players.size(), currPlayer);
