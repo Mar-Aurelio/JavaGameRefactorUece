@@ -17,7 +17,6 @@ public class Board{
       spaces.add(GameFactory.getSpace(inSpaces.charAt(i)));
     }
 
-    System.out.println(inPlayers.length());
     for (int i = 0; i < inPlayers.length(); i++) {
       players.add(GameFactory.getPlayer(inPlayers.charAt(i), colors[i]));
     }
